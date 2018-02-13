@@ -1,0 +1,34 @@
+app:
+  name: MyApp
+  description: ${app.name} is a Spring Boot application
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+      exclude: static/**,public/**
+  output:
+    ansi:
+      enabled: ALWAYS
+  datasource:
+    url: jdbc:mysql://localhost/myDb
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  boot:
+    admin:
+      url: http://localhost:8082
+management:
+  security:
+    enabled: false
+---
+spring:
+  profiles: default
+server:
+  port: 8081
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8082
